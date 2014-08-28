@@ -218,6 +218,13 @@ config BR2_riscv64
 	help
 	  Riscv64
 
+config BR2_s390
+	bool "S390x"
+	select BR2_ARCH_HAS_MMU_MANDATORY
+	select BR2_ARCH_IS_64
+	help
+	  S390x support
+
 config BR2_sh
 	bool "SuperH"
 	select BR2_ARCH_HAS_MMU_OPTIONAL
@@ -469,6 +476,10 @@ endif
 
 if BR2_riscv64
 source "arch/Config.in.riscv64"
+endif
+
+if BR2_s390
+source "arch/Config.in.s390"
 endif
 
 if BR2_sh
