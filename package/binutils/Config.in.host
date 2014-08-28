@@ -3,7 +3,7 @@ comment "Binutils Options"
 config BR2_PACKAGE_HOST_BINUTILS_SUPPORTS_CFI
 	bool
 	default y
-	depends on !BR2_microblaze
+	depends on !BR2_microblaze && !BR2_alpha
 
 choice
 	prompt "Binutils Version"
