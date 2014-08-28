@@ -21,6 +21,12 @@ choice
 	help
 	  Select the target architecture family to build for.
 
+config BR2_alpha
+	bool "Alpha"
+	select BR2_ARCH_HAS_MMU_MANDATORY
+	help
+	  Alpha
+
 config BR2_arcle
 	bool "ARC (little endian)"
 	select BR2_ARCH_HAS_MMU_MANDATORY
@@ -421,6 +427,10 @@ config BR2_BINFMT_FLAT_SHARED
 	  Allow to load and link indiviual FLAT binaries at run time.
 
 endchoice
+
+if BR2_alpha
+source "arch/Config.in.alpha"
+endif
 
 if BR2_arcle || BR2_arceb
 source "arch/Config.in.arc"
