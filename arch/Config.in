@@ -217,6 +217,12 @@ config BR2_riscv64
 	help
 	  Riscv64
 
+config BR2_h8300
+	bool "H8300"
+	select BR2_ARCH_HAS_MMU_MANDATORY
+	help
+	  H8/300
+
 config BR2_s390
 	bool "S390x"
 	select BR2_ARCH_HAS_MMU_MANDATORY
@@ -454,6 +460,10 @@ endif
 
 if BR2_riscv64
 source "arch/Config.in.riscv64"
+endif
+
+if BR2_h8300
+source "arch/Config.in.h8300"
 endif
 
 if BR2_s390

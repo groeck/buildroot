@@ -50,6 +50,11 @@ ifeq ($(BR2_TOOLCHAIN_USES_UCLIBC),y)
 LIBC = uclibc
 else ifeq ($(BR2_TOOLCHAIN_USES_MUSL),y)
 LIBC = musl
+else ifeq ($(BR2_TOOLCHAIN_USES_NEWLIB),y)
+LIBC = newlib
+else ifeq ($(BR2_TOOLCHAIN_NOLIBC),y)
+# not really, needed for binutils
+LIBC = newlib
 else
 LIBC = gnu
 endif
