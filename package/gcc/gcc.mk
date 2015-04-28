@@ -168,7 +168,17 @@ else
 HOST_GCC_COMMON_CONF_OPTS += --disable-libmudflap
 endif
 
+DISABLE_THREADS=n
+
 ifeq ($(BR2_PTHREADS_NONE),y)
+DISABLE_THREADS=y
+endif
+
+ifeq ($(BR2_TOOLCHAIN_NOLIBC),y)
+DISABLE_THREADS=y
+endif
+
+ifeq ($(DISABLE_THREADS),y)
 HOST_GCC_COMMON_CONF_OPTS += \
 	--disable-threads \
 	--disable-libitm \

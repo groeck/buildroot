@@ -93,6 +93,20 @@ config BR2_TOOLCHAIN_BUILDROOT_MUSL
 	  This option selects musl as the C library for the
 	  cross-compilation toolchain.
 
+config BR2_TOOLCHAIN_BUILDROOT_NEWLIB
+	bool "newlib"
+	select BR2_TOOLCHAIN_USES_NEWLIB
+	depends on BR2_h8300
+	help
+	  This option selects newlib as the C library for the
+	  cross-compilation toolchain.
+
+config BR2_TOOLCHAIN_BUILDROOT_NOLIBC
+	bool "none"
+	select BR2_TOOLCHAIN_NOLIBC
+	help
+	  This option builds a toolchain without C library support.
+
 endchoice
 
 config BR2_TOOLCHAIN_BUILDROOT_LIBC
@@ -100,12 +114,14 @@ config BR2_TOOLCHAIN_BUILDROOT_LIBC
 	default "uclibc" if BR2_TOOLCHAIN_BUILDROOT_UCLIBC
 	default "glibc"  if BR2_TOOLCHAIN_BUILDROOT_GLIBC
 	default "musl"	 if BR2_TOOLCHAIN_BUILDROOT_MUSL
+	default "newlib" if BR2_TOOLCHAIN_BUILDROOT_NEWLIB
 
 source "package/linux-headers/Config.in.host"
 source "package/linux-headers/Config.in"
 source "package/musl/Config.in"
 source "package/uclibc/Config.in"
 source "package/glibc/Config.in"
+source "package/newlib/Config.in"
 source "package/binutils/Config.in.host"
 source "package/gcc/Config.in.host"
 source "package/elf2flt/Config.in.host"

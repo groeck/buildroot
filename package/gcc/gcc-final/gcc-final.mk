@@ -105,6 +105,11 @@ HOST_GCC_FINAL_CONF_ENV = \
 
 HOST_GCC_FINAL_MAKE_OPTS += $(HOST_GCC_COMMON_MAKE_OPTS)
 
+ifeq ($(BR2_h8300),y)
+HOST_GCC_FINAL_MAKE_OPTS = all-gcc
+HOST_GCC_FINAL_INSTALL_OPTS = install-gcc
+endif
+
 # Make sure we have 'cc'
 define HOST_GCC_FINAL_CREATE_CC_SYMLINKS
 	if [ ! -e $(HOST_DIR)/bin/$(GNU_TARGET_NAME)-cc ]; then \

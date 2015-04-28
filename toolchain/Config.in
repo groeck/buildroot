@@ -22,6 +22,12 @@ config BR2_TOOLCHAIN_USES_UCLIBC
 	bool
 	select BR2_TOOLCHAIN_SUPPORTS_PIE if !BR2_m68k && !BR2_microblaze && !BR2_STATIC_LIBS
 
+config BR2_TOOLCHAIN_USES_NEWLIB
+	bool
+
+config BR2_TOOLCHAIN_NOLIBC
+	bool
+
 config BR2_TOOLCHAIN_USES_MUSL
 	bool
 	select BR2_USE_WCHAR
