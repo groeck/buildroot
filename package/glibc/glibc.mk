@@ -7,6 +7,11 @@
 ifeq ($(BR2_arc),y)
 GLIBC_VERSION =  arc-2018.03-release
 GLIBC_SITE = $(call github,foss-for-synopsys-dwc-arc-processors,glibc,$(GLIBC_VERSION))
+else ifeq ($(BR2_riscv64),y)
+GLIBC_VERSION = riscv-glibc-2.26
+GLIBC_SITE = $(call github,riscv,riscv-glibc,$(GLIBC_VERSION))
+GLIBC_SOURCE = glibc-$(GLIBC_VERSION).tar.gz
+BR_NO_CHECK_HASH_FOR += $(GLIBC_SOURCE)
 else
 # Generate version string using:
 #   git describe --match 'glibc-*' --abbrev=40 origin/release/MAJOR.MINOR/master
@@ -101,6 +106,7 @@ define GLIBC_CONFIGURE_CMDS
 		--without-gd \
 		--enable-obsolete-rpc \
 		--enable-obsolete-nsl \
+		$(if $(BR2_riscv64),--disable-werror) \
 		--enable-kernel=$(call qstrip,$(BR2_TOOLCHAIN_HEADERS_AT_LEAST)) \
 		--with-headers=$(STAGING_DIR)/usr/include)
 	$(GLIBC_ADD_MISSING_STUB_H)

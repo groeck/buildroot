@@ -207,6 +207,13 @@ config BR2_powerpc64le
 	  http://www.power.org/
 	  http://en.wikipedia.org/wiki/Powerpc
 
+config BR2_riscv64
+	bool "riscv64"
+	select BR2_ARCH_HAS_MMU_MANDATORY
+	select BR2_ARCH_IS_64
+	help
+	  Riscv64
+
 config BR2_sh
 	bool "SuperH"
 	select BR2_ARCH_HAS_MMU_OPTIONAL
@@ -441,6 +448,10 @@ endif
 
 if BR2_powerpc || BR2_powerpc64 || BR2_powerpc64le
 source "arch/Config.in.powerpc"
+endif
+
+if BR2_riscv64
+source "arch/Config.in.riscv64"
 endif
 
 if BR2_sh
