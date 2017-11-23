@@ -2,6 +2,7 @@ comment "GCC Options"
 
 choice
 	prompt "GCC compiler Version"
+	default BR2_GCC_VERSION_7_X if BR2_riscv64
 	default BR2_GCC_VERSION_ARC if BR2_arc
 	default BR2_GCC_VERSION_OR1K if BR2_or1k
 	default BR2_GCC_VERSION_6_X
@@ -26,6 +27,7 @@ config BR2_GCC_VERSION_4_9_X
 	# Broken or unsupported architectures
 	depends on !BR2_arc
 	depends on !BR2_or1k
+	depends on !BR2_riscv64
 	# musl on microblaze, ppc64 and mips64 unsupported
 	depends on !(BR2_TOOLCHAIN_USES_MUSL && (BR2_microblazeel || BR2_microblazebe))
 	depends on !(BR2_TOOLCHAIN_USES_MUSL && (BR2_powerpc64 || BR2_powerpc64le))
@@ -40,6 +42,7 @@ config BR2_GCC_VERSION_5_X
 	# Broken or unsupported architectures
 	depends on !BR2_arc
 	depends on !BR2_or1k
+	depends on !BR2_riscv64
 	# musl on ppc64 and mips64 unsupported
 	depends on !(BR2_TOOLCHAIN_USES_MUSL && (BR2_powerpc64 || BR2_powerpc64le))
 	depends on !(BR2_TOOLCHAIN_USES_MUSL && (BR2_mips64 || BR2_mips64el))
@@ -53,6 +56,7 @@ config BR2_GCC_VERSION_6_X
 	# Broken or unsupported architectures
 	depends on !BR2_arc
 	depends on !BR2_or1k
+	depends on !BR2_riscv64
 	select BR2_TOOLCHAIN_GCC_AT_LEAST_6
 
 config BR2_GCC_VERSION_7_X
