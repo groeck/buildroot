@@ -1,0 +1,65 @@
+#!/bin/sh
+
+OPTIONS=""	# GETTY_OPTIONS
+BAUDRATE=115200	# GETTY_BAUDRATE
+TERM="vt100"	# GETTY_TERM
+CONSOLE=""	# GETTY CONSOLE
+
+consoles=""
+
+findconsole()
+{
+  local cons="$1"
+  local rv=1
+  local con
+
+  for con in ${cons}; do
+    if [ "${con}" != "tty" -a "${con}" != "tty0" -a -e "/dev/${con}" ]; then
+	echo "Found console ${con}"
+	consoles="${consoles} ${con}"
+	rv=0
+    fi
+  done
+  return ${rv}
+}
+
+start()
+{
+    if ! findconsole "${CONSOLE}"; then
+	if ! findconsole "$(cat /proc/consoles | awk '{ print $1 }')"; then
+	    if ! findconsole "$(cat /sys/class/tty/console/active)"; then
+		findconsole "console"
+	    fi
+	fi
+    fi
+
+    if [ -z "${consoles}" ]; then
+	echo "WARNING: no useful console"
+	echo "command line: $(cat /proc/cmdline)"
+	echo "consoles: $(cat /proc/consoles)"
+	echo "active: $(cat /sys/class/tty/console/active)"
+
+	exec /run.sh
+    fi
+
+    if ! awk '$4~/(^|,)ro($|,)/' /proc/mounts | grep -q dev/root; then
+	# root file system is read-write, update inittab and restart init
+	sed -i -e '/run.sh/d' /etc/inittab
+	for con in ${consoles}; do
+	    echo "${con}::respawn:/sbin/getty -n -l /run.sh ${OPTIONS} ${con} ${BAUDRATE} ${TERM}" >> /etc/inittab
+	done
+	kill -SIGHUP 1
+    else
+	# root file system is read-only. Start run script directly
+	# on first console.
+	con=$(echo "${consoles}" | awk '{ print $1 }')
+	/sbin/getty -n -l /run.sh ${OPTIONS} ${con} ${BAUDRATE} ${TERM}
+    fi
+}
+
+case "$1" in
+	start)
+		"$1";;
+	*)
+		exit 0
+esac
