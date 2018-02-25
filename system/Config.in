@@ -320,6 +320,10 @@ menuconfig BR2_TARGET_GENERIC_GETTY
 	default y
 
 if BR2_TARGET_GENERIC_GETTY
+config BR2_TARGET_RUN_TESTSCRIPT
+	bool "Run test scripts instead of getty after boot"
+	default n
+
 config BR2_TARGET_GENERIC_GETTY_PORT
 	string "TTY port"
 	default "console"
