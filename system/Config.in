@@ -315,9 +315,40 @@ menuconfig BR2_TARGET_GENERIC_GETTY
 	default y
 
 if BR2_TARGET_GENERIC_GETTY
+config BR2_TARGET_RUN_TESTSCRIPT
+	bool "Run test scripts instead of getty after boot"
+	default n
+
+choice
+	prompt "Shutdown command to use"
+	default BR2_SHUTDOWN_COMMAND_REBOOT
+	depends on BR2_TARGET_RUN_TESTSCRIPT
+	help
+	  Select if 'poweroff' or 'reboot' should be used to shut down system
+
+config BR2_SHUTDOWN_COMMAND_REBOOT
+	bool "reboot"
+
+config BR2_SHUTDOWN_COMMAND_POWEROFF
+	bool "poweroff"
+
+endchoice
+
+config BR2_TARGET_SHUTDOWN_COMMAND
+	string
+	depends on BR2_TARGET_RUN_TESTSCRIPT
+	default "reboot" if BR2_SHUTDOWN_COMMAND_REBOOT
+	default "poweroff" if BR2_SHUTDOWN_COMMAND_POWEROFF
+
+config BR2_TARGET_SHUTDOWN_MESSAGE
+	string
+	depends on BR2_TARGET_RUN_TESTSCRIPT
+	default "Rebooting" if BR2_SHUTDOWN_COMMAND_REBOOT
+	default "Poweroff" if BR2_SHUTDOWN_COMMAND_POWEROFF
+
 config BR2_TARGET_GENERIC_GETTY_PORT
 	string "TTY port"
-	default "console"
+	default "console" if BR2_s390 || !BR2_TARGET_RUN_TESTSCRIPT
 	help
 	  Specify a port to run a getty on.
 
