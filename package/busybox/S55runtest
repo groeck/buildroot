@@ -1,0 +1,26 @@
+#!/bin/sh
+
+OPTIONS=""	# GETTY_OPTIONS
+BAUDRATE=115200	# GETTY_BAUDRATE
+TERM="vt100"	# GETTY_TERM
+
+sed -i -e '/run.sh/d' /etc/inittab
+found=0
+for con in $(cat /proc/consoles | awk '{ print $1 }')
+do
+    if [ "${con}" != "tty" ]; then
+	echo "Found console ${con}"
+	echo "${con}::respawn:/sbin/getty -n -l /run.sh ${OPTIONS} ${con} ${BAUDRATE} ${TERM}" >> /etc/inittab
+	found=1
+    fi
+done
+
+if [ ${found} -eq 0 ]; then
+    echo "WARNING: no useful console"
+    echo "command line: $(cat /proc/cmdline)"
+    echo "consoles: $(cat /proc/consoles)"
+
+    exec /run.sh
+fi
+
+kill -SIGHUP 1
