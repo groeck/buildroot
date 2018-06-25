@@ -54,6 +54,7 @@ config BR2_PTHREADS_NATIVE
 config BR2_PTHREADS
 	bool "linuxthreads"
 	depends on BR2_m68k || BR2_microblaze || BR2_or1k || BR2_arm || BR2_armeb || BR2_xtensa
+	depends on BR2_USE_MMU
 	select BR2_TOOLCHAIN_HAS_THREADS
 
 config BR2_PTHREADS_NONE
