@@ -8,7 +8,7 @@ sed -i -e '/run.sh/d' /etc/inittab
 found=0
 for con in $(cat /proc/consoles | awk '{ print $1 }')
 do
-    if [ "${con}" != "tty" ]; then
+    if [ "${con}" != "tty" -a -e "/dev/${con}" ]; then
 	echo "Found console ${con}"
 	echo "${con}::respawn:/sbin/getty -n -l /run.sh ${OPTIONS} ${con} ${BAUDRATE} ${TERM}" >> /etc/inittab
 	found=1
