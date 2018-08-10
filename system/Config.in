@@ -353,7 +353,7 @@ config BR2_TARGET_SHUTDOWN_MESSAGE
 
 config BR2_TARGET_GENERIC_GETTY_PORT
 	string "TTY port"
-	default "console"
+	default "console" if BR2_s390 || !BR2_TARGET_RUN_TESTSCRIPT
 	help
 	  Specify a port to run a getty on.
 

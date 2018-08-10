@@ -3,17 +3,24 @@
 OPTIONS=""	# GETTY_OPTIONS
 BAUDRATE=115200	# GETTY_BAUDRATE
 TERM="vt100"	# GETTY_TERM
+CONSOLE=""	# GETTY CONSOLE
 
 sed -i -e '/run.sh/d' /etc/inittab
-found=0
-for con in $(cat /proc/consoles | awk '{ print $1 }')
-do
+
+if [ "${CONSOLE}" != "" ]; then
+  echo "${CONSOLE}::respawn:/sbin/getty -n -l /run.sh ${OPTIONS} ${CONSOLE} ${BAUDRATE} ${TERM}" >> /etc/inittab
+  found=1
+else
+  found=0
+  for con in $(cat /proc/consoles | awk '{ print $1 }')
+  do
     if [ "${con}" != "tty" -a -e "/dev/${con}" ]; then
 	echo "Found console ${con}"
 	echo "${con}::respawn:/sbin/getty -n -l /run.sh ${OPTIONS} ${con} ${BAUDRATE} ${TERM}" >> /etc/inittab
 	found=1
     fi
-done
+  done
+fi
 
 if [ ${found} -eq 0 ]; then
     echo "WARNING: no useful console"

@@ -224,6 +224,13 @@ define BUSYBOX_SET_GETTY
 	$(SED) '/# GETTY_TERM$$/s~^.*#~TERM="$(SYSTEM_GETTY_TERM)" #~' \
 		$(TARGET_DIR)/etc/init.d/S55runtest
 endef
+ifneq ($(BR2_TARGET_GENERIC_GETTY_PORT),)
+define BUSYBOX_SET_CONSOLE
+	$(SED) '/# GETTY CONSOLE$$/s~^.*#~CONSOLE="$(SYSTEM_GETTY_PORT)" #~' \
+		$(TARGET_DIR)/etc/init.d/S55runtest
+endef
+BUSYBOX_TARGET_FINALIZE_HOOKS += BUSYBOX_SET_CONSOLE
+endif
 define BUSYBOX_SET_BOOTCMD
 	$(SED) '/# REBOOT_MESSAGE$$/s~^.*#~MESSAGE="$(SYSTEM_SHUTDOWN_MESSAGE)" #~' \
 		$(TARGET_DIR)/run.sh
