@@ -326,7 +326,8 @@ config BR2_TARGET_RUN_TESTSCRIPT
 
 choice
 	prompt "Shutdown command to use"
-	default BR2_SHUTDOWN_COMMAND_REBOOT
+	default BR2_SHUTDOWN_COMMAND_REBOOT if !BR2_riscv64 && !BR2_sh
+	default BR2_SHUTDOWN_COMMAND_POWEROFF if BR2_riscv64 || BR2_sh
 	depends on BR2_TARGET_RUN_TESTSCRIPT
 	help
 	  Select if 'poweroff' or 'reboot' should be used to shut down system
