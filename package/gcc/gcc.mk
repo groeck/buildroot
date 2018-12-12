@@ -59,6 +59,10 @@ define HOST_GCC_CONFIGURE_SYMLINK
 	ln -sf ../configure $(@D)/build/configure
 endef
 
+define HOST_GCC_DOWNLOAD_PREREQUISITES
+	(cd $(@D); ./contrib/download_prerequisites)
+endef
+
 #
 # Common configuration options
 #

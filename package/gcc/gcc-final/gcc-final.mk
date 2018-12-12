@@ -28,6 +28,7 @@ HOST_GCC_FINAL_POST_PATCH_HOOKS += HOST_GCC_APPLY_PATCHES
 HOST_GCC_FINAL_SUBDIR = build
 
 HOST_GCC_FINAL_PRE_CONFIGURE_HOOKS += HOST_GCC_CONFIGURE_SYMLINK
+HOST_GCC_FINAL_PRE_CONFIGURE_HOOKS += HOST_GCC_DOWNLOAD_PREREQUISITES
 
 # We want to always build the static variants of all the gcc libraries,
 # of which libstdc++, libgomp, libmudflap...
