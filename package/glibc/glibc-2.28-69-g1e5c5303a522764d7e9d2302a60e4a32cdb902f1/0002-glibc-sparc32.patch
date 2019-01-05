@@ -1,0 +1,5 @@
+--- ./sysdeps/sparc/sparc32/pthread_barrier_wait.c	2018-11-28 12:45:42.000000000 -0800
++++ ./sysdeps/sparc/sparc32/pthread_barrier_wait_new.c	2019-01-05 10:47:19.147923449 -0800
+@@ -1 +1 @@
+-#error No support for pthread barriers on pre-v9 sparc.
++#include <nptl/pthread_barrier_wait.c>

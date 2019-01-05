@@ -106,7 +106,7 @@ HOST_GCC_COMMON_CONF_ENV += CFLAGS_FOR_TARGET="$(GCC_COMMON_TARGET_CFLAGS)"
 HOST_GCC_COMMON_CONF_ENV += CXXFLAGS_FOR_TARGET="$(GCC_COMMON_TARGET_CXXFLAGS)"
 
 # libitm needs sparc V9+
-ifeq ($(BR2_sparc_v8)$(BR2_sparc_leon3),y)
+ifeq ($(BR2_sparc_v7)$(BR2_sparc_v8)$(BR2_sparc_leon3),y)
 HOST_GCC_COMMON_CONF_OPTS += --disable-libitm
 endif
 

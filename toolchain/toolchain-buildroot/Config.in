@@ -52,7 +52,7 @@ config BR2_TOOLCHAIN_BUILDROOT_GLIBC
 		   BR2_x86_64      || BR2_microblaze || BR2_nios2       || \
 		   (BR2_arc && BR2_ARC_ATOMIC_EXT)   || BR2_csky        || \
 		   BR2_alpha       || BR2_s390       || BR2_parisc      || \
-		   BR2_parisc64
+		   BR2_parisc64    || BR2_sparc
 	depends on BR2_USE_MMU
 	depends on !BR2_STATIC_LIBS
 	depends on BR2_TOOLCHAIN_HEADERS_AT_LEAST_3_2
