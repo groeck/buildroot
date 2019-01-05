@@ -6,6 +6,9 @@ choice
 	help
 	  Specific CPU variant to use
 
+config BR2_sparc_v7
+	bool "v7"
+	depends on BR2_sparc
 config BR2_sparc_v8
 	bool "v8"
 	depends on BR2_sparc
@@ -26,6 +29,7 @@ config BR2_ENDIAN
 
 config BR2_GCC_TARGET_CPU
 	default "leon3"		if BR2_sparc_leon3
+	default "v7"		if BR2_sparc_v7
 	default "v8"		if BR2_sparc_v8
 	default "ultrasparc"	if BR2_sparc_v9
 

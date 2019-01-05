@@ -19,7 +19,7 @@ LIBATOMIC_OPS_LICENSE_FILES = doc/LICENSING.txt COPYING
 
 LIBATOMIC_OPS_INSTALL_STAGING = YES
 
-ifeq ($(BR2_sparc_v8)$(BR2_sparc_leon3),y)
+ifeq ($(BR2_sparc_v7)$(BR2_sparc_v8)$(BR2_sparc_leon3),y)
 LIBATOMIC_OPS_CONF_ENV = CFLAGS="$(TARGET_CFLAGS) -DAO_NO_SPARC_V9"
 endif
 
