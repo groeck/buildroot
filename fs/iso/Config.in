@@ -1,0 +1,57 @@
+config BR2_TARGET_ROOTFS_ISO
+	bool "Create iso image with root filesystem"
+	default y
+	help
+	  Build an iso image of the root filesystem
+
+choice
+	prompt "Compression method"
+	default BR2_TARGET_ROOTFS_ISO_NONE
+	depends on BR2_TARGET_ROOTFS_ISO
+	help
+	  Select compressor for iso image of the root filesystem
+
+config BR2_TARGET_ROOTFS_ISO_NONE
+	bool "no compression"
+	help
+	  Do not compress the iso image.
+
+config BR2_TARGET_ROOTFS_ISO_GZIP
+	bool "gzip"
+	help
+	  Do compress the iso image with gzip.
+
+config BR2_TARGET_ROOTFS_ISO_BZIP2
+	bool "bzip2"
+	help
+	  Do compress the iso image with bzip2.
+
+config BR2_TARGET_ROOTFS_ISO_LZ4
+	bool "lz4"
+	help
+	  Do compress the iso image with lz4.
+
+config BR2_TARGET_ROOTFS_ISO_LZMA
+	bool "lzma"
+	help
+	  Do compress the iso image with lzma.
+
+config BR2_TARGET_ROOTFS_ISO_LZO
+	bool "lzo"
+	help
+	  Do compress the iso image with lzop.
+
+config BR2_TARGET_ROOTFS_ISO_XZ
+	bool "xz"
+	help
+	  Do compress the iso image with xz.
+
+endchoice
+
+config BR2_TARGET_ROOTFS_ISO_OPTIONS
+	string "other random options to pass to mkisofs"
+	default ""
+	depends on BR2_TARGET_ROOTFS_ISO
+	help
+	  Any other flags you want to pass to mkisofs
+	  Refer to mkisofs --help for details
