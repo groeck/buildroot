@@ -20,8 +20,8 @@ buildone()
     if make; then
 	rm -rf "images/${name}"
 	mv output/images "images/${name}"
-	if [[ -e output/images/${name}/rootfs.btrfs ]]; then
-	    gzip -f output/images/${name}/rootfs.btrfs
+	if [[ -e images/${name}/rootfs.btrfs ]]; then
+	    gzip -f images/${name}/rootfs.btrfs
 	fi
 	return 1
     fi
