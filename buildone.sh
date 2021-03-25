@@ -1,5 +1,7 @@
 #!/bin/bash
 
+IMAGEDIR="images-$(git describe | cut -f1 -d-)"
+
 buildone()
 {
     local config="$1"
@@ -11,17 +13,17 @@ buildone()
 	return 1
     fi
 
-    mkdir -p images
+    mkdir -p "${IMAGEDIR}"
     echo "Building ${name}"
 
     rm -rf output
 
     make ${config}
     if make; then
-	rm -rf "images/${name}"
-	mv output/images "images/${name}"
-	if [[ -e images/${name}/rootfs.btrfs ]]; then
-	    gzip -f images/${name}/rootfs.btrfs
+	rm -rf ""${IMAGEDIR}"/${name}"
+	mv output/images ""${IMAGEDIR}"/${name}"
+	if [[ -e "${IMAGEDIR}"/${name}/rootfs.btrfs ]]; then
+	    gzip -f "${IMAGEDIR}"/${name}/rootfs.btrfs
 	fi
 	return 1
     fi
