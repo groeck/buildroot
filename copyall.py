@@ -4,13 +4,11 @@
 #   arm/rootfs-arm-m3
 #   arm/rootfs-armv4
 #   arm/rootfs-sa110
-#   microblazeel
-#   microblaze
-#   openrisc
 #   xtensa/rootfs-dc232b
 #   xtensa/rootfs-dc233c
 #   xtensa/rootfs-nommu
 
+import filecmp
 import os
 import subprocess
 
@@ -78,6 +76,16 @@ config = {
             'rootfs.ext2.gz': 'rootfs-5208.ext2.gz',
         }
     },
+    'microblaze': { 'destdir': 'microblaze',
+        'files': {
+            'rootfs.cpio.gz': 'rootfs.cpio.gz',
+        }
+    },
+    'microblazeel': { 'destdir': 'microblazeel',
+        'files': {
+            'rootfs.cpio.gz': 'rootfs.cpio.gz',
+        }
+    },
     'mips': { 'destdir': 'mips',
         'files': {
             'rootfs.cpio.gz': 'rootfs.cpio.gz',
@@ -131,6 +139,11 @@ config = {
         }
     },
     'nios2': { 'destdir': 'nios2',
+        'files': {
+            'rootfs.cpio.gz': 'rootfs.cpio.gz',
+        }
+    },
+    'openrisc': { 'destdir': 'openrisc',
         'files': {
             'rootfs.cpio.gz': 'rootfs.cpio.gz',
         }
@@ -244,6 +257,11 @@ def copyone(frompath, fromarch):
         if not os.path.isfile(destpath):
             print('Warning: %s does not exist in %s' %
                   (filelist[fromfile], os.path.join(rootfsdir, c['destdir'])))
+        elif filecmp.cmp(sourcepath, destpath):
+            print('Skipping %s (no change)' % sourcepath)
+            continue
+
+        print('Copying %s' % sourcepath)
 
         cmd = ['cp', sourcepath, destpath]
         # print('copy command: ', cmd)
