@@ -40,6 +40,13 @@ config = {
             'rootfs.ext2.gz': 'rootfs.ext2.gz',
         }
     },
+    'armv4': { 'destdir': 'arm',
+        'files': {
+            'rootfs.cpio.gz': 'rootfs-armv4.cpio.gz',
+            'rootfs.ext2.gz': 'rootfs-armv4.ext2.gz',
+            'rootfs.squashfs': 'rootfs-armv4.sqf'
+        }
+    },
     'armv5': { 'destdir': 'arm',
         'files': {
             'rootfs.btrfs.gz': 'rootfs-armv5.btrfs.gz',
