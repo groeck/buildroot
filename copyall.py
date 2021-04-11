@@ -12,7 +12,7 @@ import filecmp
 import os
 import subprocess
 
-imagedir = 'images-2021.02'
+imagedir = 'images-2021.02.1'
 # rootfsdir = '/tmp/testdir'
 rootfsdir = '/opt/buildbot/rootfs'
 
