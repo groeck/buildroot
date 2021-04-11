@@ -236,6 +236,24 @@ config = {
             'rootfs.iso.gz': 'rootfs.iso.gz',
             'rootfs.squashfs': 'rootfs.squashfs'
         }
+    },
+    'xtensa_dc232b': { 'destdir': 'xtensa',
+        'files': {
+            'rootfs.cpio.gz': 'rootfs-dc232b.cpio.gz',
+            'rootfs.ext2.gz': 'rootfs-dc232b.ext2.gz',
+            'rootfs.squashfs': 'rootfs-dc232b.squashfs'
+        }
+    },
+    'xtensa_dc233c': { 'destdir': 'xtensa',
+        'files': {
+            'rootfs.cpio.gz': 'rootfs-dc233c.cpio.gz',
+            'rootfs.ext2.gz': 'rootfs-dc233c.ext2.gz',
+        }
+    },
+    'xtensa_de212': { 'destdir': 'xtensa',
+        'files': {
+            'rootfs.cpio.gz': 'rootfs-nommu.cpio.gz',
+        }
     }
 }
 
