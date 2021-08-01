@@ -85,11 +85,13 @@ config = {
     },
     'microblaze': { 'destdir': 'microblaze',
         'files': {
+            'rootfs.ext2.gz': 'rootfs.ext2.gz',
             'rootfs.cpio.gz': 'rootfs.cpio.gz',
         }
     },
     'microblazeel': { 'destdir': 'microblazeel',
         'files': {
+            'rootfs.ext2.gz': 'rootfs.ext2.gz',
             'rootfs.cpio.gz': 'rootfs.cpio.gz',
         }
     },
