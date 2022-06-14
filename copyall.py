@@ -99,12 +99,14 @@ config = {
         'files': {
             'rootfs.cpio.gz': 'rootfs.cpio.gz',
             'rootfs.ext2.gz': 'rootfs.ext2.gz',
+            'rootfs.squashfs': 'rootfs.squashfs'
         }
     },
     'mipsel_r1': { 'destdir': 'mipsel',
         'files': {
             'rootfs.cpio.gz': 'rootfs.cpio.gz',
             'rootfs.ext2.gz': 'rootfs-mipselr1.ext2.gz',
+            'rootfs.squashfs': 'rootfs.squashfs',
         }
     },
     'mipsel_r6': { 'destdir': 'mipsel',
@@ -122,6 +124,7 @@ config = {
         'files': {
             'rootfs.cpio.gz': 'rootfs-n64.cpio.gz',
             'rootfs.ext2.gz': 'rootfs-n64.ext2.gz',
+            'rootfs.squashfs': 'rootfs-n64.squashfs',
         }
     },
     'mipsel64r1_n32': { 'destdir': 'mipsel64',
@@ -134,6 +137,7 @@ config = {
             'rootfs.cpio.gz': 'rootfs.mipsel64r1_n64.cpio.gz',
             'rootfs.ext2.gz': 'rootfs.mipsel64r1_n64.ext2.gz',
             'rootfs.iso.gz': 'rootfs.mipsel64r1_n64.iso.gz',
+            'rootfs.squashfs': 'rootfs.mipsel64r1_n64.squashfs',
         }
     },
     'mipsel64r6_n32': { 'destdir': 'mipsel64',
