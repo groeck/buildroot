@@ -18,4 +18,4 @@ Run the script 'update' in this directory, and commit the result.
 The current Buildroot version is based on this commit of the config.git
 repository (leave alone on its own line, the script updates it):
 
-d7a4dee7cc25e332b990d0a6d9f0ddd42cb33cf5
+63acb96f92473ceb5e21d873d7c0aee266b3d6d3
