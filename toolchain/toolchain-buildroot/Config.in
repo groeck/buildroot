@@ -74,6 +74,10 @@ comment "glibc on or1k needs a toolchain w/ headers >= 5.4"
 	depends on BR2_or1k
 	depends on !BR2_TOOLCHAIN_HEADERS_AT_LEAST_5_4
 
+comment "glibc on loongarch64 needs a toolchain w/ headers >= 6.1"
+	depends on BR2_loongarch64
+	depends on !BR2_TOOLCHAIN_HEADERS_AT_LEAST_6_1
+
 config BR2_TOOLCHAIN_BUILDROOT_MUSL
 	bool "musl"
 	depends on BR2_PACKAGE_MUSL_SUPPORTS
