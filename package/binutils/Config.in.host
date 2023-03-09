@@ -7,6 +7,7 @@ config BR2_PACKAGE_HOST_BINUTILS_SUPPORTS_CFI
 
 choice
 	prompt "Binutils Version"
+	default BR2_BINUTILS_VERSION_2_39_X if BR2_loongarch64
 	default BR2_BINUTILS_VERSION_2_38_X if !BR2_arc
 	default BR2_BINUTILS_VERSION_ARC if BR2_arc
 	help
@@ -16,9 +17,11 @@ config BR2_BINUTILS_VERSION_2_37_X
 	bool "binutils 2.37"
 	# AVX512FP16 instructions were not supported before binutils
 	# 2.38
+	depends on !BR2_loongarch64
 	depends on !BR2_X86_CPU_HAS_AVX512
 
 config BR2_BINUTILS_VERSION_2_38_X
+	depends on !BR2_loongarch64
 	bool "binutils 2.38"
 
 config BR2_BINUTILS_VERSION_2_39_X
