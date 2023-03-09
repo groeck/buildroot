@@ -6,6 +6,7 @@ config BR2_PACKAGE_GLIBC_ARCH_SUPPORTS
 	default y if BR2_aarch64
 	default y if BR2_aarch64_be
 	default y if BR2_i386
+	default y if BR2_loongarch64
 	default y if BR2_mips
 	default y if BR2_mipsel
 	default y if BR2_mips64
@@ -42,6 +43,7 @@ config BR2_PACKAGE_GLIBC_SUPPORTS
 	depends on BR2_TOOLCHAIN_HEADERS_AT_LEAST_5_0 || !BR2_RISCV_64
 	depends on BR2_TOOLCHAIN_HEADERS_AT_LEAST_5_1 || !BR2_arc
 	depends on BR2_TOOLCHAIN_HEADERS_AT_LEAST_5_4 || !BR2_or1k
+	depends on BR2_TOOLCHAIN_HEADERS_AT_LEAST_6_1 || !BR2_loongarch64
 
 if BR2_TOOLCHAIN_BUILDROOT_GLIBC
 
