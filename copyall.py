@@ -71,6 +71,15 @@ config = {
             'rootfs.squashfs': 'rootfs.squashfs'
         }
     },
+    'loongarch64': { 'destdir': 'loongarch',
+        'files': {
+            'rootfs.cpio.gz': 'rootfs.cpio.gz',
+            'rootfs.ext2.gz': 'rootfs.ext2.gz',
+            'rootfs.btrfs.gz': 'rootfs.btrfs.gz',
+            'rootfs.iso.gz': 'rootfs.iso.gz',
+            'rootfs.squashfs': 'rootfs.squashfs',
+        }
+    },
     'm68k_q800': { 'destdir': 'm68k',
         'files': {
             'rootfs.cpio.gz': 'rootfs-68040.cpio.gz',
