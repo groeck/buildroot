@@ -52,6 +52,7 @@ config = {
             'rootfs.btrfs.gz': 'rootfs-armv5.btrfs.gz',
             'rootfs.cpio.gz': 'rootfs-armv5.cpio.gz',
             'rootfs.ext2.gz': 'rootfs-armv5.ext2.gz',
+            'rootfs.f2fs.gz': 'rootfs-armv5.f2fs.gz',
             'rootfs.squashfs': 'rootfs-armv5.sqf'
         }
     },
@@ -60,6 +61,7 @@ config = {
             'rootfs.btrfs.gz': 'rootfs-armv7a.btrfs.gz',
             'rootfs.cpio.gz': 'rootfs-armv7a.cpio.gz',
             'rootfs.ext2.gz': 'rootfs-armv7a.ext2.gz',
+            'rootfs.f2fs.gz': 'rootfs-armv7a.f2fs.gz',
         }
     },
     'i386': { 'destdir': 'x86',
