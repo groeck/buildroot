@@ -29,15 +29,33 @@ network_test()
 	    telnet 10.0.2.2:22 </dev/null >/dev/null 2>dev/null
 	    if [ $? -eq 0 ]; then
 		echo "Network interface test passed"
-		return
+		return 0
 	    fi
 	fi
     fi
 
     echo "Network interface test failed"
+    return 1
+}
+
+tpm_test()
+{
+    if [ -c /dev/tpm0 ]; then
+	if [ "$(cat /sys/class/tpm/tpm0/tpm_version_major)" -eq 2 ]; then
+	    tpm2_selftest -f
+	    if [ $? -eq 0 ]; then
+		echo "TPM selftest passed"
+		return 0
+	    fi
+	fi
+    fi
+    echo "TPM selftest failed"
+    return 1
 }
 
 network_test
+
+tpm_test
 
 echo "Boot successful."
 
