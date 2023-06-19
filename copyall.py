@@ -8,6 +8,7 @@
 #   xtensa/rootfs-dc233c
 #   xtensa/rootfs-nommu
 
+import argparse
 import filecmp
 import os
 import subprocess
@@ -322,9 +323,29 @@ def copyone(frompath, fromarch):
         md5file.close()
         os.chdir(workdir)
 
-def copyall(basedir):
 
-    for arch in config:
+def copyall(basedir, architectures=list(config)):
+
+    for arch in architectures:
         copyone(basedir, arch)
 
-copyall(imagedir)
+
+def architecture(arch):
+    if arch not in config:
+        raise ValueError('Unsupported architecture')
+    return arch
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="copy buildroot file systems to target directory"
+    )
+    parser.add_argument(
+        "architecture",
+        type=architecture,
+        nargs="*",
+        help="Architecture(s) to copy.",
+    )
+    args = parser.parse_args()
+
+    copyall(imagedir, args.architecture)
