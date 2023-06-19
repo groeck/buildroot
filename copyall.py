@@ -189,12 +189,14 @@ config = {
         'files': {
             'rootfs.cpio.gz': 'rootfs.cpio.gz',
             'rootfs.ext2.gz': 'rootfs.ext2.gz',
+            'rootfs.squashfs': 'rootfs.squashfs'
         }
     },
     'ppc64le': { 'destdir': 'ppc64',
         'files': {
             'rootfs.cpio.gz': 'rootfs-el.cpio.gz',
             'rootfs.ext2.gz': 'rootfs-el.ext2.gz',
+            'rootfs.squashfs': 'rootfs-el.squashfs'
         }
     },
     'riscv32': { 'destdir': 'riscv32',
