@@ -13,7 +13,7 @@ import filecmp
 import os
 import subprocess
 
-imagedir = 'images-2023.02.2'
+imagedir = 'images-2023.02.3'
 # rootfsdir = '/tmp/testdir'
 rootfsdir = '/opt/buildbot/rootfs'
 
@@ -252,7 +252,9 @@ config = {
         'files': {
             'rootfs.btrfs.gz': 'rootfs.btrfs.gz',
             'rootfs.cpio.gz': 'rootfs.cpio.gz',
+            'rootfs.erofs': 'rootfs.erofs',
             'rootfs.ext2.gz': 'rootfs.ext2.gz',
+            'rootfs.f2fs.gz': 'rootfs.f2fs.gz',
             'rootfs.iso.gz': 'rootfs.iso.gz',
             'rootfs.squashfs': 'rootfs.squashfs'
         }
