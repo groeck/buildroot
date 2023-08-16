@@ -22,7 +22,9 @@ config = {
         'files': {
             'rootfs.btrfs.gz': 'rootfs.btrfs.gz',
             'rootfs.cpio.gz': 'rootfs.cpio.gz',
+            'rootfs.erofs': 'rootfs.erofs',
             'rootfs.ext2.gz': 'rootfs.ext2.gz',
+            'rootfs.f2fs.gz': 'rootfs.f2fs.gz',
             'rootfs.squashfs': 'rootfs.squashfs'
         }
     },
@@ -30,7 +32,9 @@ config = {
         'files': {
             'rootfs.btrfs.gz': 'rootfs.btrfs.gz',
             'rootfs.cpio.gz': 'rootfs.cpio.gz',
+            'rootfs.erofs': 'rootfs.erofs',
             'rootfs.ext2.gz': 'rootfs.ext2.gz',
+            'rootfs.f2fs.gz': 'rootfs.f2fs.gz',
             'rootfs.iso.gz': 'rootfs.iso.gz',
             'rootfs.squashfs': 'rootfs.squashfs'
         }
