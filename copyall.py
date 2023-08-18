@@ -65,6 +65,7 @@ config = {
         'files': {
             'rootfs.btrfs.gz': 'rootfs-armv7a.btrfs.gz',
             'rootfs.cpio.gz': 'rootfs-armv7a.cpio.gz',
+            'rootfs.erofs': 'rootfs-armv7a.erofs',
             'rootfs.ext2.gz': 'rootfs-armv7a.ext2.gz',
             'rootfs.f2fs.gz': 'rootfs-armv7a.f2fs.gz',
         }
@@ -220,7 +221,9 @@ config = {
     's390x': { 'destdir': 's390',
         'files': {
             'rootfs.cpio.gz': 'rootfs.cpio.gz',
+            'rootfs.erofs': 'rootfs.erofs',
             'rootfs.ext2.gz': 'rootfs.ext2.gz',
+            'rootfs.f2fs.gz': 'rootfs.f2fs.gz',
         }
     },
     'sh': { 'destdir': 'sh',
