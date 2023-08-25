@@ -65,6 +65,7 @@ config = {
         'files': {
             'rootfs.btrfs.gz': 'rootfs-armv7a.btrfs.gz',
             'rootfs.cpio.gz': 'rootfs-armv7a.cpio.gz',
+            'rootfs.cramfs': 'rootfs-armv7a.cramfs',
             'rootfs.erofs': 'rootfs-armv7a.erofs',
             'rootfs.ext2.gz': 'rootfs-armv7a.ext2.gz',
             'rootfs.f2fs.gz': 'rootfs-armv7a.f2fs.gz',
