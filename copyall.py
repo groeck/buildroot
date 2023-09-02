@@ -56,6 +56,7 @@ config = {
         'files': {
             'rootfs.btrfs.gz': 'rootfs-armv5.btrfs.gz',
             'rootfs.cpio.gz': 'rootfs-armv5.cpio.gz',
+            'rootfs.cramfs': 'rootfs-armv5.cramfs',
             'rootfs.ext2.gz': 'rootfs-armv5.ext2.gz',
             'rootfs.f2fs.gz': 'rootfs-armv5.f2fs.gz',
             'rootfs.squashfs': 'rootfs-armv5.sqf'
@@ -92,6 +93,7 @@ config = {
     'm68k_q800': { 'destdir': 'm68k',
         'files': {
             'rootfs.cpio.gz': 'rootfs-68040.cpio.gz',
+            'rootfs.cramfs': 'rootfs-68040.cramfs',
             'rootfs.ext2.gz': 'rootfs-68040.ext2.gz',
         }
     },
@@ -187,8 +189,12 @@ config = {
     },
     'ppc': { 'destdir': 'ppc',
         'files': {
+            'rootfs.btrfs.gz': 'rootfs.btrfs.gz',
             'rootfs.cpio.gz': 'rootfs.cpio.gz',
+            'rootfs.cramfs': 'rootfs.cramfs',
+            'rootfs.erofs': 'rootfs.erofs',
             'rootfs.ext2.gz': 'rootfs.ext2.gz',
+            'rootfs.f2fs.gz': 'rootfs.f2fs.gz',
         }
     },
     'ppc64': { 'destdir': 'ppc64',
