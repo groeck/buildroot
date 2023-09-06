@@ -53,9 +53,60 @@ tpm_test()
     return 1
 }
 
+__fs_test()
+{
+    local rv=0
+
+    if ! grep -q "fstest=" /proc/cmdline; then
+        return 2
+    fi
+
+    local fstestdev=`cat /proc/cmdline | sed -e 's/.*fstest=//' | sed -e 's/ .*//'`
+
+    if [ ! -b "${fstestdev}" ]; then
+	return 1
+    fi
+
+    if ! mount "${fstestdev}" /mnt; then
+	return 1
+    fi
+    rv=0
+    if ! cp -a /bin /usr /sbin /etc /lib* /opt /var /mnt; then
+	rv=1
+    fi
+    if ! rm -rf /mnt/bin; then
+	rv=1
+    fi
+    if ! cp -a /bin /usr /sbin /etc /lib* /opt /var /mnt; then
+	rv=1
+    fi
+    if ! umount /mnt; then
+	rv=1
+    fi
+    return ${rv}
+}
+
+fs_test()
+{
+    __fs_test
+    case $? in
+    0)
+        echo "File system test passed"
+        ;;
+    1)
+        echo "File system test failed"
+        ;;
+    *)
+        echo "File system test skipped"
+        ;;
+    esac
+}
+
 network_test
 
 tpm_test
+
+fs_test
 
 echo "Boot successful."
 
