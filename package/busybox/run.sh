@@ -57,11 +57,9 @@ __fs_test()
 {
     local rv=0
     local srcdirs="/bin /usr /sbin /etc /lib* /opt /var"
-    local use_tar=0
-    local files
 
     if ! grep -q "fstest=" /proc/cmdline; then
-        return 2
+	return 2
     fi
 
     local fstestdev=`cat /proc/cmdline | sed -e 's/.*fstest=//' | sed -e 's/ .*//'`
@@ -70,44 +68,49 @@ __fs_test()
 	return 1
     fi
 
+    if ! mount "${fstestdev}" /mnt; then
+	return 1
+    fi
+
     local fstype=`lsblk -o FSTYPE -n "${fstestdev}"`
 
     # hfs does not support symlinks. ntfs does support symlinks,
     # but its support is broken in the Linux kernel ntfs3 implementation
     # (from v5.15 at least up to including v6.6).
-    # The busybox version of cp always tries to copy symlinks,
-    # so use tar if symlinks are not supported by the target
-    # filesystem.
     if [ "${fstype}" = "hfs" -o "${fstype}" = "ntfs" ]; then
-	use_tar=1
-        files=`find ${srcdirs} -type f`
+	# The busybox version of cp always tries to copy symlinks,
+	# so use tar to copy files if symlinks are not supported or
+	# known to be broken.
+	if ! tar cf /mnt/testfile.tar `find ${srcdirs} -type f` 2>/dev/null; then
+	    rv=1
+	fi
+	cd /mnt
+	if ! tar xf testfile.tar; then
+	    rv=1
+	fi
+	if ! rm -rf bin; then
+	    rv=1
+	fi
+	if ! tar xf testfile.tar --overwrite; then
+	    rv=1
+	fi
+	cd /
+    else
+	if ! cp -a ${srcdirs} /mnt; then
+	    rv=1
+	fi
+	if ! rm -rf /mnt/bin; then
+	    rv=1
+	fi
+	if ! cp -a ${srcdirs} /mnt; then
+	    rv=1
+	fi
     fi
 
-    if ! mount "${fstestdev}" /mnt; then
-	return 1
-    fi
-
-    rv=0
-    if [ "${use_tar}" -eq 0 ]; then
-        if ! cp -a ${srcdirs} /mnt; then
-	    rv=1
-        fi
-    elif ! tar cf - `echo ${files}` 2>/dev/null | (cd /mnt; tar xf -); then
-	rv=1
-    fi
-    if ! rm -rf /mnt/bin; then
-	rv=1
-    fi
-    if [ "${use_tar}" -eq 0 ]; then
-        if ! cp -a ${srcdirs} /mnt; then
-	    rv=1
-        fi
-    elif ! tar cf - `echo ${files}` 2>/dev/null | (cd /mnt; tar xf -); then
-	rv=1
-    fi
     if ! umount /mnt; then
 	rv=1
     fi
+
     return ${rv}
 }
 
@@ -116,14 +119,14 @@ fs_test()
     __fs_test
     case $? in
     0)
-        echo "File system test passed"
-        ;;
+	echo "File system test passed"
+	;;
     1)
-        echo "File system test failed"
-        ;;
+	echo "File system test failed"
+	;;
     *)
-        echo "File system test skipped"
-        ;;
+	echo "File system test skipped"
+	;;
     esac
 }
 
