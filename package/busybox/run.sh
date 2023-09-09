@@ -74,10 +74,8 @@ __fs_test()
 
     local fstype=`lsblk -o FSTYPE -n "${fstestdev}"`
 
-    # hfs does not support symlinks. ntfs does support symlinks,
-    # but its support is broken in the Linux kernel ntfs3 implementation
-    # (from v5.15 at least up to including v6.6).
-    if [ "${fstype}" = "hfs" -o "${fstype}" = "ntfs" ]; then
+    # hfs and exfat do not support symlinks.
+    if [ "${fstype}" = "hfs" -o "${fstype}" = "exfat" ]; then
 	# The busybox version of cp always tries to copy symlinks,
 	# so use tar to copy files if symlinks are not supported or
 	# known to be broken.
