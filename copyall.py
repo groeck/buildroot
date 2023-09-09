@@ -137,37 +137,49 @@ config = {
     'mips64_n32': { 'destdir': 'mips64',
         'files': {
             'rootfs.cpio.gz': 'rootfs-n32.cpio.gz',
+            'rootfs.btrfs.gz': 'rootfs-n32.btrfs.gz',
             'rootfs.ext2.gz': 'rootfs-n32.ext2.gz',
         }
     },
     'mips64_n64': { 'destdir': 'mips64',
         'files': {
             'rootfs.cpio.gz': 'rootfs-n64.cpio.gz',
+            'rootfs.btrfs.gz': 'rootfs-n64.btrfs.gz',
             'rootfs.ext2.gz': 'rootfs-n64.ext2.gz',
             'rootfs.squashfs': 'rootfs-n64.squashfs',
         }
     },
     'mipsel64r1_n32': { 'destdir': 'mipsel64',
         'files': {
+            'rootfs.btrfs.gz': 'rootfs.mipsel64r1_n32.btrfs.gz',
             'rootfs.ext2.gz': 'rootfs.mipsel64r1_n32.ext2.gz',
+            'rootfs.f2fs.gz': 'rootfs.mipsel64r1_n32.f2fs.gz',
         }
     },
     'mipsel64r1_n64': { 'destdir': 'mipsel64',
         'files': {
+            'rootfs.btrfs.gz': 'rootfs.mipsel64r1_n64.btrfs.gz',
             'rootfs.cpio.gz': 'rootfs.mipsel64r1_n64.cpio.gz',
             'rootfs.ext2.gz': 'rootfs.mipsel64r1_n64.ext2.gz',
+            'rootfs.f2fs.gz': 'rootfs.mipsel64r1_n64.f2fs.gz',
             'rootfs.iso.gz': 'rootfs.mipsel64r1_n64.iso.gz',
             'rootfs.squashfs': 'rootfs.mipsel64r1_n64.squashfs',
         }
     },
     'mipsel64r6_n32': { 'destdir': 'mipsel64',
         'files': {
+            'rootfs.btrfs.gz': 'rootfs.mipsel64r6_n32.btrfs.gz',
+            'rootfs.erofs': 'rootfs.mipsel64r6_n32.erofs',
             'rootfs.ext2.gz': 'rootfs.mipsel64r6_n32.ext2.gz',
+            'rootfs.f2fs.gz': 'rootfs.mipsel64r6_n32.f2fs.gz',
         }
     },
     'mipsel64r6_n64': { 'destdir': 'mipsel64',
         'files': {
+            'rootfs.btrfs.gz': 'rootfs.mipsel64r6_n64.btrfs.gz',
+            'rootfs.erofs': 'rootfs.mipsel64r6_n64.erofs',
             'rootfs.ext2.gz': 'rootfs.mipsel64r6_n64.ext2.gz',
+            'rootfs.f2fs.gz': 'rootfs.mipsel64r6_n64.f2fs.gz',
             'rootfs.iso.gz': 'rootfs.mipsel64r6_n64.iso.gz',
         }
     },
