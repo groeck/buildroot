@@ -13,7 +13,11 @@ import filecmp
 import os
 import subprocess
 
-imagedir = 'images-2023.02.3'
+# imagedir = 'images-2023.02.4'
+
+x=subprocess.run(["git", "describe"], capture_output=True, text=True)
+imagedir="images-"+x.stdout.split('-')[0]
+
 # rootfsdir = '/tmp/testdir'
 rootfsdir = '/opt/buildbot/rootfs'
 
