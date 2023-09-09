@@ -211,11 +211,12 @@ config BR2_PACKAGE_UTIL_LINUX_LOSETUP
 	help
 	  Set up and control loop devices
 
-config BR2_PACKAGE_UTIL_LINUX_LSFD
-	bool "lsfd"
+config BR2_PACKAGE_UTIL_LINUX_LSBLK
+	bool "lsblk"
 	depends on BR2_USE_MMU # libsmartcols
-	depends on BR2_TOOLCHAIN_HEADERS_AT_LEAST_3_19
 	select BR2_PACKAGE_UTIL_LINUX_LIBSMARTCOLS
+	select BR2_PACKAGE_UTIL_LINUX_LIBBLKID
+	select BR2_PACKAGE_UTIL_LINUX_LIBMOUNT
 	help
 	  List file descriptors (modern replacement for lsof)
 
