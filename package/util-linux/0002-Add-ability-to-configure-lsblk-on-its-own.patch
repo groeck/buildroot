@@ -1,0 +1,30 @@
+From eb719c9a50cbff1667330e85b7f421727def858a Mon Sep 17 00:00:00 2001
+From: Guenter Roeck <linux@roeck-us.net>
+Date: Sat, 9 Sep 2023 08:24:33 -0700
+Subject: [PATCH] Add ability to configure lsblk on its own
+
+Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+---
+ configure.ac | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 738b369ee..0a8469b7b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1769,7 +1769,11 @@ AC_CHECK_FUNCS([swapon])
+ AC_CHECK_FUNCS([swapoff])
+ 
+ 
+-UL_BUILD_INIT([lsblk], [check])
++AC_ARG_ENABLE([lsblk],
++  AS_HELP_STRING([--disable-lsblk], [do not build lsblk]),
++  [], [UL_DEFAULT_ENABLE([lsblk], [check])]
++)
++UL_BUILD_INIT([lsblk])
+ UL_REQUIRES_LINUX([lsblk])
+ UL_REQUIRES_BUILD([lsblk], [libblkid])
+ UL_REQUIRES_BUILD([lsblk], [libmount])
+-- 
+2.39.2
+
