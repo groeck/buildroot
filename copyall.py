@@ -123,6 +123,7 @@ config = {
         'files': {
             'rootfs.cpio.gz': 'rootfs.cpio.gz',
             'rootfs.ext2.gz': 'rootfs.ext2.gz',
+            'rootfs.f2fs.gz': 'rootfs.f2fs.gz',
             'rootfs.squashfs': 'rootfs.squashfs'
         }
     },
