@@ -143,14 +143,18 @@ config = {
         'files': {
             'rootfs.cpio.gz': 'rootfs-n32.cpio.gz',
             'rootfs.btrfs.gz': 'rootfs-n32.btrfs.gz',
+            'rootfs.erofs': 'rootfs-n32.erofs',
             'rootfs.ext2.gz': 'rootfs-n32.ext2.gz',
+            'rootfs.f2fs.gz': 'rootfs-n32.f2fs.gz',
         }
     },
     'mips64_n64': { 'destdir': 'mips64',
         'files': {
             'rootfs.cpio.gz': 'rootfs-n64.cpio.gz',
             'rootfs.btrfs.gz': 'rootfs-n64.btrfs.gz',
+            'rootfs.erofs': 'rootfs-n64.erofs',
             'rootfs.ext2.gz': 'rootfs-n64.ext2.gz',
+            'rootfs.f2fs.gz': 'rootfs-n64.f2fs.gz',
             'rootfs.squashfs': 'rootfs-n64.squashfs',
         }
     },
@@ -165,6 +169,7 @@ config = {
         'files': {
             'rootfs.btrfs.gz': 'rootfs.mipsel64r1_n64.btrfs.gz',
             'rootfs.cpio.gz': 'rootfs.mipsel64r1_n64.cpio.gz',
+            'rootfs.erofs': 'rootfs.mipsel64r1_n64.erofs',
             'rootfs.ext2.gz': 'rootfs.mipsel64r1_n64.ext2.gz',
             'rootfs.f2fs.gz': 'rootfs.mipsel64r1_n64.f2fs.gz',
             'rootfs.iso.gz': 'rootfs.mipsel64r1_n64.iso.gz',
@@ -201,7 +206,17 @@ config = {
     'parisc': { 'destdir': 'parisc',
         'files': {
             'rootfs.cpio.gz': 'rootfs.cpio.gz',
+            'rootfs.btrfs.gz': 'rootfs.btrfs.gz',
             'rootfs.ext2.gz': 'rootfs.ext2.gz',
+            'rootfs.f2fs.gz': 'rootfs.f2fs.gz',
+        }
+    },
+    'parisc64': { 'destdir': 'parisc',
+        'files': {
+            'rootfs.cpio.gz': 'rootfs64.cpio.gz',
+            'rootfs.btrfs.gz': 'rootfs64.btrfs.gz',
+            'rootfs.ext2.gz': 'rootfs64.ext2.gz',
+            'rootfs.f2fs.gz': 'rootfs64.f2fs.gz',
         }
     },
     'ppc': { 'destdir': 'ppc',
